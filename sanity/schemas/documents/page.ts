@@ -79,11 +79,7 @@ export default defineType({
           },
           styles: [],
         }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
+        // Images
         defineField({
           type: 'image',
           icon: ImageIcon,

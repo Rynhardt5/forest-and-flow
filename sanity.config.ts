@@ -7,12 +7,10 @@ import {apiVersion, dataset, projectId, studioUrl} from '@/sanity/lib/api'
 import * as resolve from '@/sanity/plugins/resolve'
 import {pageStructure, singletonPlugin} from '@/sanity/plugins/settings'
 import page from '@/sanity/schemas/documents/page'
-import project from '@/sanity/schemas/documents/project'
-import duration from '@/sanity/schemas/objects/duration'
-import milestone from '@/sanity/schemas/objects/milestone'
-import timeline from '@/sanity/schemas/objects/timeline'
-import home from '@/sanity/schemas/singletons/home'
-import settings from '@/sanity/schemas/singletons/settings'
+import ctaSection from '@/sanity/schemas/singletons/ctaSection'
+import homePage from '@/sanity/schemas/singletons/homePage'
+import servicesPage from '@/sanity/schemas/singletons/servicesPage'
+import siteSettings from '@/sanity/schemas/singletons/siteSettings'
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
@@ -31,27 +29,24 @@ export default defineConfig({
     // If you want more content types, you can add them to this array
     types: [
       // Singletons
-      home,
-      settings,
+      ctaSection,
+      homePage,
+      servicesPage,
+      siteSettings,
       // Documents
-      duration,
       page,
-      project,
-      // Objects
-      milestone,
-      timeline,
     ],
   },
   plugins: [
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([homePage, servicesPage, ctaSection, siteSettings]),
     }),
     presentationTool({
       resolve,
       previewUrl: {previewMode: {enable: '/api/draft-mode/enable'}},
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([homePage.name, servicesPage.name, ctaSection.name, siteSettings.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

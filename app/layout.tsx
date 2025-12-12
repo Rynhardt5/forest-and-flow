@@ -1,28 +1,23 @@
+import type React from 'react'
 import './globals.css'
-import {IBM_Plex_Mono, Inter, PT_Serif} from 'next/font/google'
+import {DM_Sans, Playfair_Display} from 'next/font/google'
 
-const serif = PT_Serif({
-  variable: '--font-serif',
-  style: ['normal', 'italic'],
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '700'],
-})
-const sans = Inter({
   variable: '--font-sans',
-  subsets: ['latin'],
-  // @todo: understand why extrabold (800) isn't being respected when explicitly specified in this weight array
-  // weight: ['500', '700', '800'],
+  display: 'swap',
 })
-const mono = IBM_Plex_Mono({
-  variable: '--font-mono',
+
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['500', '700'],
+  variable: '--font-serif',
+  display: 'swap',
 })
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${mono.variable} ${sans.variable} ${serif.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${dmSans.variable} ${playfair.variable}`}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   )
 }
