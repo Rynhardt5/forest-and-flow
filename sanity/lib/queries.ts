@@ -60,6 +60,8 @@ export const forestFlowHomeQuery = defineQuery(`
       description
     },
     servicesClosing,
+    servicesButtonText,
+    servicesButtonUrl,
     // Approach
     approachLabel,
     approachTitle,
@@ -168,7 +170,15 @@ export const forestFlowSettingsQuery = defineQuery(`
     // General
     siteName,
     siteTagline,
-    logo,
+    logo{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    showLogo,
+    logoSize,
     // SEO
     seoTitle,
     seoDescription,

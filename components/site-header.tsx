@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, TreePine } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/config'
@@ -17,6 +18,15 @@ const defaultNavLinks = [
 interface SiteHeaderProps {
   settings?: {
     siteName?: string
+    logo?: {
+      asset?: {
+        _id: string
+        url: string
+      }
+      alt?: string
+    }
+    showLogo?: boolean
+    logoSize?: number
     navLinks?: Array<{
       _key: string
       label?: string
@@ -32,6 +42,10 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
   const navLinks = settings?.navLinks?.length ? settings.navLinks : defaultNavLinks
   const defaultBookingUrl = settings?.bookingUrlFreeConsult || siteConfig.bookingUrls.freeConsult
   const siteName = settings?.siteName || 'Forest & Flow'
+  const logo = settings?.logo?.asset?.url
+  const logoAlt = settings?.logo?.alt || siteName
+  const showLogo = settings?.showLogo !== false // defaults to true
+  const logoSize = settings?.logoSize || 40
   const buttonText = settings?.navButtonText || 'Book a Consult'
   const buttonUrl = settings?.navButtonUrl || defaultBookingUrl
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -91,7 +105,17 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
           aria-label="Main navigation"
         >
           <Link href="/" className="flex items-center gap-2">
-            <TreePine className="h-8 w-8 text-primary" />
+            {showLogo && logo ? (
+              <Image
+                src={logo}
+                alt={logoAlt}
+                width={logoSize}
+                height={logoSize}
+                style={{ height: logoSize, width: 'auto' }}
+              />
+            ) : showLogo ? (
+              <TreePine className="h-8 w-8 text-primary" />
+            ) : null}
             <span className="font-serif text-xl font-semibold text-foreground">
               {siteName}
             </span>

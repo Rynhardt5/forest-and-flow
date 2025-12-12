@@ -38,6 +38,23 @@ export default defineType({
       group: 'general',
       options: {hotspot: true},
     }),
+    defineField({
+      name: 'showLogo',
+      title: 'Show Logo in Navbar',
+      type: 'boolean',
+      group: 'general',
+      description: 'Toggle to show/hide the logo in the navigation bar',
+      initialValue: true,
+    }),
+    defineField({
+      name: 'logoSize',
+      title: 'Logo Size (pixels)',
+      type: 'number',
+      group: 'general',
+      description: 'Height of the logo in pixels (default: 40)',
+      initialValue: 40,
+      validation: (rule) => rule.min(20).max(100),
+    }),
 
     // SEO
     defineField({

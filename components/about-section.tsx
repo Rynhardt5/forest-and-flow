@@ -34,7 +34,7 @@ export function AboutSection({ data }: AboutSectionProps) {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Image */}
           <div className="relative">
-            <div className="aspect-[4/5] rounded-lg overflow-hidden bg-muted relative">
+            <div className="aspect-[4/5] rounded-lg overflow-hidden bg-transparent relative">
               <Image
                 src={aboutImageUrl}
                 alt="James - Therapist at Forest & Flow Counselling"

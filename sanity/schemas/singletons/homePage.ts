@@ -205,6 +205,21 @@ export default defineType({
       rows: 3,
       group: 'howCanIHelp',
     }),
+    defineField({
+      name: 'servicesButtonText',
+      title: 'Services Button Text',
+      type: 'string',
+      group: 'howCanIHelp',
+      description: 'e.g., "Book an Online Session"',
+    }),
+    defineField({
+      name: 'servicesButtonUrl',
+      title: 'Services Button URL',
+      type: 'url',
+      group: 'howCanIHelp',
+      description: 'URL for the services section button',
+      validation: (rule) => rule.uri({allowRelative: true}),
+    }),
 
     // Approach Section
     defineField({

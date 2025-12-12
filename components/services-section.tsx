@@ -49,6 +49,8 @@ interface ServicesSectionProps {
       description?: string
     }>
     servicesClosing?: string
+    servicesButtonText?: string
+    servicesButtonUrl?: string
   } | null
   settings?: {
     bookingUrlFreeConsult?: string
@@ -57,7 +59,9 @@ interface ServicesSectionProps {
 
 export function ServicesSection({data, settings}: ServicesSectionProps) {
   const services = data?.services?.length ? data.services : defaultServices
-  const bookingUrl = settings?.bookingUrlFreeConsult || siteConfig.bookingUrls.freeConsult
+  const defaultBookingUrl = settings?.bookingUrlFreeConsult || siteConfig.bookingUrls.freeConsult
+  const buttonText = data?.servicesButtonText || 'Book an Online Session'
+  const buttonUrl = data?.servicesButtonUrl || defaultBookingUrl
 
   return (
     <section id="services" className="py-24 md:py-32 bg-background">
@@ -97,7 +101,7 @@ export function ServicesSection({data, settings}: ServicesSectionProps) {
               "Together, we'll slow things down, make sense of what's happening, and build the clarity and confidence you need to take your next steps with strength and trust in yourself."}
           </p>
           <Button size="lg" asChild>
-            <Link href={bookingUrl}>Book an Online Session</Link>
+            <Link href={buttonUrl}>{buttonText}</Link>
           </Button>
         </div>
       </div>
