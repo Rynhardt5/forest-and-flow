@@ -88,8 +88,8 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-background/98 backdrop-blur-md border-b border-border shadow-sm'
-          : 'bg-background/80 backdrop-blur-sm border-b border-border'
+          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
+          : 'bg-background/95 backdrop-blur-sm border-b border-border'
       )}
     >
       <div className="max-w-6xl mx-auto px-6 py-4" ref={menuRef}>
@@ -116,7 +116,7 @@ export function SiteHeader({ settings }: SiteHeaderProps) {
             ) : showLogo ? (
               <TreePine className="h-8 w-8 text-primary" />
             ) : null}
-            <span className="font-serif text-xl font-semibold text-foreground">
+            <span className="font-serif text-base md:text-xl font-semibold text-foreground">
               {siteName}
             </span>
           </Link>
