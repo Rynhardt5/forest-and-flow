@@ -145,6 +145,35 @@ export const servicesPageQuery = defineQuery(`
   }
 `)
 
+// Contact Page Query
+export const contactPageQuery = defineQuery(`
+  *[_type == "contactPage"][0]{
+    _id,
+    _type,
+    // Hero
+    heroTitle,
+    heroDescription,
+    // Form
+    formspreeId,
+    formTitle,
+    formDescription,
+    submitButtonText,
+    successMessage,
+    // Contact Info
+    contactInfoTitle,
+    email,
+    phone,
+    responseTime,
+    ctaTitle,
+    ctaDescription,
+    ctaButtonText,
+    ctaButtonUrl,
+    // SEO
+    seoTitle,
+    seoDescription
+  }
+`)
+
 // Shared CTA Section Query
 export const ctaSectionQuery = defineQuery(`
   *[_type == "ctaSection"][0]{
@@ -179,6 +208,12 @@ export const forestFlowSettingsQuery = defineQuery(`
     },
     showLogo,
     logoSize,
+    favicon{
+      asset->{
+        _id,
+        url
+      }
+    },
     // SEO
     seoTitle,
     seoDescription,

@@ -55,6 +55,16 @@ export default defineType({
       initialValue: 40,
       validation: (rule) => rule.min(20).max(100),
     }),
+    defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'image',
+      group: 'general',
+      description: 'Site favicon (recommended: 32x32 or 64x64 PNG)',
+      options: {
+        accept: 'image/png,image/x-icon,image/svg+xml',
+      },
+    }),
 
     // SEO
     defineField({

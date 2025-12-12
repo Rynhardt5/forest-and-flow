@@ -7,7 +7,7 @@ import {apiVersion, dataset, projectId, studioUrl} from '@/sanity/lib/api'
 import * as resolve from '@/sanity/plugins/resolve'
 import {pageStructure, singletonPlugin} from '@/sanity/plugins/settings'
 import page from '@/sanity/schemas/documents/page'
-import ctaSection from '@/sanity/schemas/singletons/ctaSection'
+import contactPage from '@/sanity/schemas/singletons/contactPage'
 import homePage from '@/sanity/schemas/singletons/homePage'
 import servicesPage from '@/sanity/schemas/singletons/servicesPage'
 import siteSettings from '@/sanity/schemas/singletons/siteSettings'
@@ -29,7 +29,7 @@ export default defineConfig({
     // If you want more content types, you can add them to this array
     types: [
       // Singletons
-      ctaSection,
+      contactPage,
       homePage,
       servicesPage,
       siteSettings,
@@ -39,14 +39,14 @@ export default defineConfig({
   },
   plugins: [
     structureTool({
-      structure: pageStructure([homePage, servicesPage, ctaSection, siteSettings]),
+      structure: pageStructure([homePage, servicesPage, contactPage, siteSettings]),
     }),
     presentationTool({
       resolve,
       previewUrl: {previewMode: {enable: '/api/draft-mode/enable'}},
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([homePage.name, servicesPage.name, ctaSection.name, siteSettings.name]),
+    singletonPlugin([homePage.name, servicesPage.name, contactPage.name, siteSettings.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

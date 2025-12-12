@@ -22,6 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteName = siteSettings?.siteName || siteConfig.name
   const seoTitle = siteSettings?.seoTitle || siteName
   const seoDescription = siteSettings?.seoDescription || siteConfig.description
+  const faviconUrl = siteSettings?.favicon?.asset?.url
 
   return {
     title: {
@@ -32,6 +33,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       images: ogImage ? [ogImage] : [],
     },
+    icons: faviconUrl ? {
+      icon: faviconUrl,
+      shortcut: faviconUrl,
+      apple: faviconUrl,
+    } : undefined,
   }
 }
 
